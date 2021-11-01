@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@mixin flex($dir, $content) {
+  display: flex;
+  align-items: center;
+  flex-direction: $dir;
+  justify-content: $content;
+}
+
+%main-font {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 3px;
+}
+
+body {
+  @include flex(column, center);
+  @extend %main-font;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  background: linear-gradient(135deg, #ffcf1b, #ff8b1b);
+
+  a {
+    color: #000;
+  }
+}
+
+.container {
+  width: 45%;
+  min-width: 500px;
+  background-color: #fff;
+  padding: 40px 30px;
+  border-radius: 10px;
+  box-shadow: 0 15px 25px rgba($color: #000000, $alpha: 0.15);
+  transition: all 3s ease-in-out;
+
+  .scores {
+    margin-bottom: 50px;
+    text-align: right;
+  }
+
+  .weapons {
+    width: 90%;
+    margin: auto;
+    @include flex(row, space-around);
+
+    button {
+      background-color: #ffd51b;
+      color: #000000;
+      border: none;
+      font-size: 50px;
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+      outline: none;
+      cursor: pointer;
+
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+  }
+  .details {
+    margin-top: 30px;
+    text-align: center;
+
+    #user-choice,
+    #computer-choice {
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    #result {
+      width: 180px;
+      padding: 10px 0;
+      margin: 30px auto;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+  }
+  .scores,
+  .details {
+    @extend %main-font;
+
+    span {
+      font-weight: 600;
+    }
+  }
+}
