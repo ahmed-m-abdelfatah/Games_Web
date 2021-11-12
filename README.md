@@ -1,4 +1,4 @@
 # Games_Web
 
-1. https://number-guessing-01.netlify.app
-2. https://rock-paper-scissor-02.netlify.app
+- https://ahmed-mo1300.github.io/number-guessing-01
+- https://ahmed-mo1300.github.io/rock-paper-scissor-02
