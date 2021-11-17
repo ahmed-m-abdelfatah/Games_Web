@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* Global Rules */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  height: 100vh;
+  background: linear-gradient(135deg, #ffcf1b, #ff8b1b);
+  background-attachment: fixed;
+}
+
+/* game-container */
+.game-container {
+  min-width: 500px;
+  width: 60%;
+  background-color: #fff;
+  padding: 40px 30px;
+  border-radius: 10px;
+  margin: 5%;
+  box-shadow: 0 15px 25px rgba($color: #000000, $alpha: 0.15);
+  transition: all 3s ease-in-out;
+
+  @media (max-width: 991px) {
+    min-width: 70%;
+    padding: 20px 10px;
+  }
+
+  @media (max-width: 767px) {
+    min-width: 90%;
+  }
+
+  .scores {
+    margin-bottom: 50px;
+    text-align: right;
+
+    p {
+      #computer-score {
+        font-weight: 600;
+      }
+    }
+  }
+
+  .weapons {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    button {
+      background-color: #ffd51b;
+      color: #000000;
+      border: none;
+      font-size: 50px;
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+      outline: none;
+      cursor: pointer;
+
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+  }
+
+  .details {
+    margin-top: 30px;
+    text-align: center;
+
+    %user-choice-computer-choice {
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    %details-spans {
+      font-weight: 600;
+
+      @media (max-width: 767px) {
+        display: block;
+      }
+    }
+
+    #user-choice {
+      @extend %user-choice-computer-choice;
+
+      span {
+        @extend %details-spans;
+      }
+    }
+
+    #computer-choice {
+      @extend %user-choice-computer-choice;
+
+      span {
+        @extend %details-spans;
+      }
+    }
+
+    #result {
+      width: 180px;
+      padding: 10px 0;
+      margin: 30px auto;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+
+      @media (max-width: 767px) {
+        width: auto;
+      }
+
+      span {
+        @extend %details-spans;
+      }
+    }
+  }
+}
