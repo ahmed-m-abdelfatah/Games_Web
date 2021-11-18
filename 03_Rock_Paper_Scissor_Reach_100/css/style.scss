@@ -13,7 +13,8 @@ body {
   align-items: center;
   justify-content: center;
   font-family: 'Poppins', sans-serif;
-  font-size: 16px;
+  // 100% == 16px
+  font-size: 100%;
   font-weight: 400;
   letter-spacing: 3px;
   height: 100vh;
@@ -46,7 +47,7 @@ body {
     text-align: right;
 
     p {
-      #computer-score {
+      span {
         font-weight: 600;
       }
     }
@@ -74,6 +75,16 @@ body {
 
       &:active {
         transform: scale(0.98);
+      }
+
+      &:disabled {
+        background-color: gray;
+      }
+
+      @media (max-width: 767px) {
+        font-size: 20px;
+        height: 70px;
+        width: 70px;
       }
     }
   }
@@ -112,15 +123,11 @@ body {
     }
 
     #result {
-      width: 180px;
+      width: 50%;
       padding: 10px 0;
       margin: 30px auto;
       font-weight: 600;
-      letter-spacing: 0.5px;
-
-      @media (max-width: 767px) {
-        width: auto;
-      }
+      letter-spacing: 0.5008px;
 
       span {
         @extend %details-spans;

@@ -1,5 +1,3 @@
-let [computerScore, userScore] = [0, 0];
-const resultRef = document.getElementById('result');
 const choicesObject = {
   rock: {
     rock: 'draw',
@@ -18,6 +16,30 @@ const choicesObject = {
   },
 };
 
+let [computerScore, userScore] = [0, 0];
+const resultText = document.getElementById('result');
+const weaponsButtons = document.querySelectorAll('.weapons > button');
+
+weaponsButtons.forEach((button, index, nodeList) => {
+  button.addEventListener('click', function () {
+    let userChoice = this.dataset.choice;
+    nodeList.forEach(element => {
+      if (element.dataset.choice != userChoice) {
+        element.disabled = true;
+      }
+    });
+
+    let interval = setInterval(function () {
+      console.log('object');
+      checker(userChoice);
+
+      if (computerScore == 100 || userScore == 100) {
+        clearInterval(interval);
+      }
+    }, 10);
+  });
+});
+
 function checker(userChoice) {
   const computerChoices = ['rock', 'paper', 'scissors'];
   const num = Math.floor(Math.random() * computerChoices.length);
@@ -30,20 +52,20 @@ function checker(userChoice) {
   // determining the winner
   switch (choicesObject[userChoice][computerChoice]) {
     case 'win':
-      resultRef.style.cssText = 'background-color:#cefdce; color:#689f38';
-      resultRef.textContent = 'YOU WIN';
+      resultText.style.cssText = 'background-color:#cefdce; color:#689f38';
+      resultText.textContent = 'YOU WIN';
       userScore++;
       break;
 
     case 'lose':
-      resultRef.style = 'background-color:#ffdde0; color:#d32f2f';
-      resultRef.textContent = 'YOU LOSE';
+      resultText.style = 'background-color:#ffdde0; color:#d32f2f';
+      resultText.textContent = 'YOU LOSE';
       computerScore++;
       break;
 
     default:
-      resultRef.style = 'background-color:#e5e5e5; color:#808080';
-      resultRef.textContent = 'DRAW';
+      resultText.style = 'background-color:#e5e5e5; color:#808080';
+      resultText.textContent = 'DRAW';
       break;
   }
 
