@@ -30,7 +30,6 @@ weaponsButtons.forEach((button, index, nodeList) => {
     });
 
     let interval = setInterval(function () {
-      console.log('object');
       checker(userChoice);
 
       if (computerScore == 100 || userScore == 100) {
