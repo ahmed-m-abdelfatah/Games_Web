@@ -17,25 +17,45 @@ const choicesObject = {
 };
 
 let [computerScore, userScore] = [0, 0];
-const resultText = document.getElementById('result');
+let gameOn = true;
 const weaponsButtons = document.querySelectorAll('.weapons > button');
+const resetGame = document.getElementById('reset-game');
+const resultText = document.getElementById('result');
+
+const computerScoreText = document.getElementById('computer-score');
+const userScoreText = document.getElementById('user-score');
 
 weaponsButtons.forEach((button, index, nodeList) => {
   button.addEventListener('click', function () {
     let userChoice = this.dataset.choice;
+
     nodeList.forEach(element => {
       if (element.dataset.choice != userChoice) {
         element.disabled = true;
       }
     });
 
-    let interval = setInterval(function () {
-      checker(userChoice);
+    if (gameOn) {
+      let interval = setInterval(function () {
+        checker(userChoice);
 
-      if (computerScore == 100 || userScore == 100) {
-        clearInterval(interval);
-      }
-    }, 10);
+        if (computerScore >= 100 || userScore >= 100) {
+          clearInterval(interval);
+          gameOn = false;
+        }
+      }, 10);
+    }
+  });
+});
+
+resetGame.addEventListener('click', () => {
+  [computerScore, userScore] = [0, 0];
+  computerScoreText.textContent = computerScore;
+  userScoreText.textContent = userScore;
+  gameOn = true;
+
+  weaponsButtons.forEach(button => {
+    button.disabled = false;
   });
 });
 
@@ -68,6 +88,6 @@ function checker(userChoice) {
       break;
   }
 
-  document.getElementById('computer-score').textContent = computerScore;
-  document.getElementById('user-score').textContent = userScore;
+  computerScoreText.textContent = computerScore;
+  userScoreText.textContent = userScore;
 }

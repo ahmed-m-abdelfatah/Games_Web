@@ -26,6 +26,7 @@ body {
   font-weight: 400;
   letter-spacing: 3px;
   height: 100vh;
+  overflow: hidden;
   background: linear-gradient(135deg, #ffcf1b, #ff8b1b);
   background-attachment: fixed;
 }
@@ -135,7 +136,26 @@ body {
 .game-container .details #result {
   width: 50%;
   padding: 10px 0;
-  margin: 30px auto;
+  margin: 20px auto;
   font-weight: 600;
   letter-spacing: 0.5008px;
+}
+
+.game-container .details #reset-game {
+  background-color: #ffd51a;
+  color: #ac8f12;
+  text-transform: capitalize;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 20%;
+  padding: 10px 0;
+  margin: auto;
+  font-weight: 600;
+  letter-spacing: 0.5008px;
+}
+
+.game-container .details #reset-game:active {
+  -webkit-transform: scale(0.98);
+          transform: scale(0.98);
 }
