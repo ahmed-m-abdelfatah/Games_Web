@@ -143,7 +143,7 @@ body {
 
 .game-container .details #reset-game {
   background-color: #ffd51a;
-  color: #ac8f12;
+  color: #000;
   text-transform: capitalize;
   border: none;
   outline: none;
