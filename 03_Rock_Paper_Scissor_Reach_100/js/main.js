@@ -25,6 +25,9 @@ const resultText = document.getElementById('result');
 const computerScoreText = document.getElementById('computer-score');
 const userScoreText = document.getElementById('user-score');
 
+const computerChoiceText = document.getElementById('computer-choice');
+const userChoiceText = document.getElementById('user-choice');
+
 weaponsButtons.forEach((button, index, nodeList) => {
   button.addEventListener('click', function () {
     let userChoice = this.dataset.choice;
@@ -57,6 +60,11 @@ resetGame.addEventListener('click', () => {
   weaponsButtons.forEach(button => {
     button.disabled = false;
   });
+
+  userChoiceText.innerHTML = `You choose <span>NOTHING</span>`;
+  computerChoiceText.innerHTML = `Computer choose <span>NOTHING</span>`;
+  resultText.style.cssText = 'background-color:none; color:#000';
+  resultText.innerHTML = `<span>NOTHING</span>`;
 });
 
 function checker(userChoice) {
@@ -64,9 +72,9 @@ function checker(userChoice) {
   const num = Math.floor(Math.random() * computerChoices.length);
   let computerChoice = computerChoices[num];
 
-  document.getElementById('computer-choice').innerHTML = `Computer choose <span>${computerChoice.toUpperCase()}</span>`;
+  computerChoiceText.innerHTML = `Computer choose <span>${computerChoice.toUpperCase()}</span>`;
 
-  document.getElementById('user-choice').innerHTML = `You choose <span>${userChoice.toUpperCase()}</span>`;
+  userChoiceText.innerHTML = `You choose <span>${userChoice.toUpperCase()}</span>`;
 
   // determining the winner
   switch (choicesObject[userChoice][computerChoice]) {
