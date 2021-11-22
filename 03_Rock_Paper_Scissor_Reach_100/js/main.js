@@ -39,12 +39,14 @@ weaponsButtons.forEach((button, index, nodeList) => {
     });
 
     if (gameOn) {
+      resetGame.disabled = true;
       let interval = setInterval(function () {
         checker(userChoice);
 
         if (computerScore >= 100 || userScore >= 100) {
           clearInterval(interval);
           gameOn = false;
+          resetGame.disabled = false;
         }
       }, 10);
     }

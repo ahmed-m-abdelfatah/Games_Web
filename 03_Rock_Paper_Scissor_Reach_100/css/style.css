@@ -159,3 +159,7 @@ body {
   -webkit-transform: scale(0.98);
           transform: scale(0.98);
 }
+
+.game-container .details #reset-game:disabled {
+  background-color: gray;
+}
