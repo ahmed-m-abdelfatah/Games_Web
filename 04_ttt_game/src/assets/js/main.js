@@ -52,32 +52,45 @@ for (let y = 1; y <= 3; y++) {
   }
 }
 
+// This function is called when a cell in the grid is clicked
 function cellClickEvent(e) {
+  // If the game is paused, do nothing
   if (paused) {
     return;
   }
 
+  // Get the cell that was clicked
   const cell = grid[e.target.dataset.y][e.target.dataset.x];
 
+  // If the cell is empty
   if (!cell.value) {
+    // Pause the game
     paused = true;
 
+    // Fill the cell with an 'o'
     fillCell(cell, 'o');
 
+    // Check if the game has a winner or if there are empty cells left
     const { winner, empty } = check();
 
+    // If there is no winner and there are empty cells left
     if (!winner) {
+      // Let the computer play its turn
       play(empty);
     }
   }
 }
 
+// fillCell is a function that updates the value of a given cell in a grid object and adds the corresponding element to the UI
 function fillCell(cell, value) {
-  // add value of cell in grid object
+  // update the value of the cell in the grid object
   cell.value = value;
 
-  // add new cell to ui
-  cell.el.appendChild(icons[value].cloneNode(true));
+  // create a new element for the cell using the value
+  const cellElement = icons[value].cloneNode(true);
+
+  // add the new element to the UI
+  cell.el.appendChild(cellElement);
 }
 
 function check(dryRun) {
@@ -136,9 +149,21 @@ function check(dryRun) {
   return { winner: complete.player, empty: [...new Set(empty)] };
 }
 
+/**
+ * This function checks if a given line (row, column, or diagonal) has a winning combination
+ * for any of the players.
+ *
+ * @param {Array} line - An array of cells representing a row, column, or diagonal.
+ * @param {Object} complete - An object that will be updated with the winning player and cells, if any.
+ *
+ * @returns {void}
+ */
 function checkLine(line, complete) {
+  // Loop through each player
   for (const player of players) {
+    // Check if the player has a winning combination in the current line
     if (line[player].length === 3) {
+      // If so, update the "complete" object with the player and winning cells
       complete.player = player;
       complete.cells.push(...line[player]);
     }
