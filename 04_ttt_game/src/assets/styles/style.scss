@@ -1,0 +1,118 @@
+@use './variables' as *;
+
+:root {
+  --main-blue: #0075ff;
+  --main-blue-alt: #0d69d5;
+  --main-white: #ffffff;
+  --main-black: #111;
+  --color-background-dark-lighten: #2b2b2b;
+}
+
+* {
+  box-sizing: border-box;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+
+  &-track {
+    background-color: var(--main-white);
+  }
+
+  &-thumb {
+    background-color: var(--main-blue);
+
+    &:hover {
+      background-color: var(--main-blue-alt);
+    }
+  }
+}
+
+html {
+  font-size: 16px;
+
+  @include mdMax {
+    font-size: 14px;
+  }
+
+  @include smMax {
+    font-size: 12px;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: var(--main-black);
+  color: var(--main-white);
+  font-size: 2rem;
+}
+
+.ttt-game {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+
+  .ttt-player {
+    text-align: center;
+    margin: 1rem;
+
+    img {
+      width: 2rem;
+      background-color: var(--main-white);
+
+      &.icon-hidden {
+        display: none;
+      }
+    }
+  }
+
+  .ttt-grid {
+    line-height: 0;
+    margin: auto;
+    width: 12rem;
+
+    .ttt-row {
+      .ttt-cell {
+        border: 1px solid var(--main-white);
+        background-color: var(--color-background-dark-lighten);
+        border-width: 1px 1px 0 0;
+        display: inline-block;
+        padding: 0.2rem;
+        width: 4rem;
+        height: 4rem;
+        overflow: auto;
+
+        img {
+          max-width: 90%;
+        }
+
+        &:last-of-type {
+          border-right-width: 0;
+        }
+      }
+
+      &:nth-child(1) {
+        .ttt-cell {
+          border-top-width: 0;
+        }
+      }
+    }
+  }
+
+  & > {
+    #icon-x,
+    #icon-o {
+      display: none;
+    }
+  }
+}
