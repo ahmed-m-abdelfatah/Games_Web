@@ -93,6 +93,12 @@ body {
         overflow: auto;
         text-align: center;
 
+        &.ttt-blink {
+          img {
+            animation: blink 250ms step-end 0s 3;
+          }
+        }
+
         img {
           max-width: 90%;
         }
@@ -115,5 +121,11 @@ body {
     #icon-o {
       display: none;
     }
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
   }
 }
